@@ -1,12 +1,10 @@
 <?php
-$dbservername = "127.0.0.1";
-$dbusername = "root";
-$dbpassword = "";
-// Create connection
-$conn = mysqli_connect($dbservername, $dbusername, $dbpassword);
-// Check connection
-if (!$conn) {
-    echo "Connected unsuccessfully";
-    die("Connection failed: " . mysqli_connect_error());
-}
+    $conn=new PDO("mysql:host=127.0.0.1;port=3306;dbname=pet", 'amuns', 'A@shri2017');
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    /* if($conn){
+        echo "connected";
+    }
+    else{
+        echo "fail";
+    } */
 ?>

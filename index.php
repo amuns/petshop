@@ -1,152 +1,260 @@
-<?php
-require('dbconn.php');
-?>
-
-
 <!DOCTYPE html>
 <html>
 
-<!-- Head -->
 <head>
-
-	<title>The Pet shop</title>
-
-	<!-- Meta-Tags -->
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<meta name="keywords" content="pet shop member Login Form Widget Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design" />
-		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-	<!-- //Meta-Tags -->
-
-	<!-- Style --> <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
-		<link rel="stylesheet" href="css/slide.css">
-
-	<!-- Fonts -->
-		<link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
-
-	<!-- //Fonts -->
-
+	<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Simple House Template</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" />    
+	<link href="css/templatemo-style.css" rel="stylesheet" />
+	<link href="css/main.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<!-- //Head -->
+<!--
 
-<!-- Body -->
-<body>
+Simple House
 
-	<h1>The pet shop</h1>
+https://templatemo.com/tm-539-simple-house
 
-	<div class="container" style="height: 600px;">
-			<a href="adminlogin.php"><img src="images/a1.jpg" style="vertical-align: text-bottom;" height="20px" alt=""></a>
-            <a href="adminlogin.php" style="padding-right: 30px;"><span style="color: white">Admin Login</span></a>
+-->
+<body> 
 
-            <a href="userlogin.php"><img src="images/l1.jpg" height="20px" style="vertical-align: text-bottom;" alt=""></a>
-            <a href="userlogin.php" style="padding-right: 30px;"><span style="color: white">Login</span></a>
+	<div class="container">
+	<!-- Top box -->
+		<!-- Logo & Site Name -->
+		<div class="placeholder">
+			<div class="parallax-window" data-parallax="scroll" data-image-src="img/banner.png">
+				
+			</div>
+		</div>
 
-            <a href="register.php"><img src="images/r1.jpg" height="20px" style="vertical-align: text-bottom; color: white" alt=""></a>
-            <a href="register.php"><span style="color: white">Register</span></a>
-
-			<br><br>
+		<main>
+			<ul class="headnav">
+				<li class="headnav"><a href="index.php">Home</a></li>
+				<li class="headnav"><a href="#contact">Contact</a></li>
+				<li class="headnav" style="float:right"><a class="active" href="login.php">Login | Register</a></li>
+			</ul> 
+			<header class="row tm-welcome-section">
+				<h2 class="col-12 text-center tm-section-title">Welcome to Pet Shop</h2>
+				<p class="col-12 text-center">Our goal is to achieve customers' satisfaction and try be known for our services in the locality.</p>
+			</header>
 			
+			<div class="tm-paging-links">
+				<nav>
+					<ul>
+						<li class="tm-paging-item"><a href="#" class="tm-paging-link active">Dog Food</a></li>
+						<li class="tm-paging-item"><a href="#" class="tm-paging-link">Salad</a></li>
+						<li class="tm-paging-item"><a href="#" class="tm-paging-link">Noodle</a></li>
+					</ul>
+				</nav>
+			</div>
+
+			<!-- Gallery -->
+			<div class="row tm-gallery">
+				<!-- gallery page 1 -->
+				<div id="tm-gallery-page-pizza" class="tm-gallery-page">
+				<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+						<figure>
+							<img src="img/gallery/1.jpg" alt="Image" class="img-fluid tm-gallery-img" />
+							<figcaption>
+								<h4 class="tm-gallery-title">Maecenas eget justo</h4>
+								<p class="tm-gallery-description">Nam in suscipit nisi, sit amet consectetur metus. Ut sit amet tellus accumsan</p>
+								<p class="tm-gallery-price">$80.25</p>
+							</figcaption>
+						</figure>
+					</article>
+					<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+						<figure>
+							<img src="img/gallery/2.jpg" alt="Image" class="img-fluid tm-gallery-img" />
+							<figcaption>
+								<h4 class="tm-gallery-title">Maecenas eget justo</h4>
+								<p class="tm-gallery-description">Nam in suscipit nisi, sit amet consectetur metus. Ut sit amet tellus accumsan</p>
+								<p class="tm-gallery-price">$80.25</p>
+							</figcaption>
+						</figure>
+					</article>
+					<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+						<figure>
+							<img src="img/gallery/3.jpg" alt="Image" class="img-fluid tm-gallery-img" />
+							<figcaption>
+								<h4 class="tm-gallery-title">Quisque et felis eros</h4>
+								<p class="tm-gallery-description">Nam in suscipit nisi, sit amet consectetur metus. Ut sit amet tellus accumsan</p>
+								<p class="tm-gallery-price">$20 / $40 / $60</p>
+							</figcaption>
+						</figure>
+					</article>
+					<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+						<figure>
+							<img src="img/gallery/4.jpg" alt="Image" class="img-fluid tm-gallery-img" />
+							<figcaption>
+								<h4 class="tm-gallery-title">Sed ultricies dui</h4>
+								<p class="tm-gallery-description">Nam in suscipit nisi, sit amet consectetur metus. Ut sit amet tellus accumsan</p>
+								<p class="tm-gallery-price">$94</p>
+							</figcaption>
+						</figure>
+					</article>
+					<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+						<figure>
+							<img src="img/gallery/08.jpg" alt="Image" class="img-fluid tm-gallery-img" />
+							<figcaption>
+								<h4 class="tm-gallery-title">Donec porta consequat</h4>
+								<p class="tm-gallery-description">Nam in suscipit nisi, sit amet consectetur metus. Ut sit amet tellus accumsan</p>
+								<p class="tm-gallery-price">$15</p>
+							</figcaption>
+						</figure>
+					</article>
+				</div> <!-- gallery page 1 -->
+				
+				<!-- gallery page 2 -->
+				<div id="tm-gallery-page-salad" class="tm-gallery-page hidden">
+					<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+						<figure>
+							<img src="img/gallery/04.jpg" alt="Image" class="img-fluid tm-gallery-img" />
+							<figcaption>
+								<h4 class="tm-gallery-title">Salad Menu One</h4>
+								<p class="tm-gallery-description">Proin eu velit egestas, viverra sapien eget, consequat nunc. Vestibulum tristique</p>
+								<p class="tm-gallery-price">$25</p>
+							</figcaption>
+						</figure>
+					</article>
+					<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+						<figure>
+							<img src="img/gallery/03.jpg" alt="Image" class="img-fluid tm-gallery-img" />
+							<figcaption>
+								<h4 class="tm-gallery-title">Second Title Salad</h4>
+								<p class="tm-gallery-description">Proin eu velit egestas, viverra sapien eget, consequat nunc. Vestibulum tristique</p>
+								<p class="tm-gallery-price">$30</p>
+							</figcaption>
+						</figure>
+					</article>
+					<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+						<figure>
+							<img src="img/gallery/05.jpg" alt="Image" class="img-fluid tm-gallery-img" />
+							<figcaption>
+								<h4 class="tm-gallery-title">Third Salad Item</h4>
+								<p class="tm-gallery-description">Proin eu velit egestas, viverra sapien eget, consequat nunc. Vestibulum tristique</p>
+								<p class="tm-gallery-price">$45</p>
+							</figcaption>
+						</figure>
+					</article>
+					<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+						<figure>
+							<img src="img/gallery/01.jpg" alt="Image" class="img-fluid tm-gallery-img" />
+							<figcaption>
+								<h4 class="tm-gallery-title">Superior Salad</h4>
+								<p class="tm-gallery-description">Proin eu velit egestas, viverra sapien eget, consequat nunc. Vestibulum tristique</p>
+								<p class="tm-gallery-price">$50</p>
+							</figcaption>
+						</figure>
+					</article>
+					<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+						<figure>
+							<img src="img/gallery/08.jpg" alt="Image" class="img-fluid tm-gallery-img" />
+							<figcaption>
+								<h4 class="tm-gallery-title">Sed ultricies dui</h4>
+								<p class="tm-gallery-description">Proin eu velit egestas, viverra sapien eget, consequat nunc. Vestibulum tristique</p>
+								<p class="tm-gallery-price">$55 / $60</p>
+							</figcaption>
+						</figure>
+					</article>
+					<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+						<figure>
+							<img src="img/gallery/07.jpg" alt="Image" class="img-fluid tm-gallery-img" />
+							<figcaption>
+								<h4 class="tm-gallery-title">Maecenas eget justo</h4>
+								<p class="tm-gallery-description">Proin eu velit egestas, viverra sapien eget, consequat nunc. Vestibulum tristique</p>
+								<p class="tm-gallery-price">$75</p>
+							</figcaption>
+						</figure>
+					</article>
+				</div> <!-- gallery page 2 -->
+				
+				<!-- gallery page 3 -->
+				<div id="tm-gallery-page-noodle" class="tm-gallery-page hidden">
+					<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+						<figure>
+							<img src="img/gallery/08.jpg" alt="Image" class="img-fluid tm-gallery-img" />
+							<figcaption>
+								<h4 class="tm-gallery-title">Noodle One</h4>
+								<p class="tm-gallery-description">Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+								<p class="tm-gallery-price">$12.50</p>
+							</figcaption>
+						</figure>
+					</article>
+					<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+						<figure>
+							<img src="img/gallery/07.jpg" alt="Image" class="img-fluid tm-gallery-img" />
+							<figcaption>
+								<h4 class="tm-gallery-title">Noodle Second</h4>
+								<p class="tm-gallery-description">Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+								<p class="tm-gallery-price">$15.50</p>
+							</figcaption>
+						</figure>
+					</article>
+					<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+						<figure>
+							<img src="img/gallery/06.jpg" alt="Image" class="img-fluid tm-gallery-img" />
+							<figcaption>
+								<h4 class="tm-gallery-title">Third Soft Noodle</h4>
+								<p class="tm-gallery-description">Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+								<p class="tm-gallery-price">$20.50</p>
+							</figcaption>
+						</figure>
+					</article>
+					<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+						<figure>
+							<img src="img/gallery/05.jpg" alt="Image" class="img-fluid tm-gallery-img" />
+							<figcaption>
+								<h4 class="tm-gallery-title">Aliquam sagittis</h4>
+								<p class="tm-gallery-description">Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+								<p class="tm-gallery-price">$30.25</p>
+							</figcaption>
+						</figure>
+					</article>
+					<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+						<figure>
+							<img src="img/gallery/04.jpg" alt="Image" class="img-fluid tm-gallery-img" />
+							<figcaption>
+								<h4 class="tm-gallery-title">Maecenas eget justo</h4>
+								<p class="tm-gallery-description">Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+								<p class="tm-gallery-price">$35.50</p>
+							</figcaption>
+						</figure>
+					</article>
+					<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+						<figure>
+							<img src="img/gallery/03.jpg" alt="Image" class="img-fluid tm-gallery-img" />
+							<figcaption>
+								<h4 class="tm-gallery-title">Quisque et felis eros</h4>
+								<p class="tm-gallery-description">Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+								<p class="tm-gallery-price">$40.50</p>
+							</figcaption>
+						</figure>
+					</article>
+
+				</div> <!-- gallery page 3 -->
+			</div>
 			
-			<div class="slideshow-container">
-			<br><br>
-			<!-- Full-width images with number and caption text -->
-			<div class="mySlides fade">
-				<img src="images/animal/d1.jpg" style="width:95%">
-			</div>
+		</main>
 
-			<div class="mySlides fade">
-				<img src="images/animal/d2.jpg" style="width:95%">
-			</div>
-
-			<div class="mySlides fade">
-				<img src="images/animal/d3.jpg" style="width:95%">
-			</div>
-
-			<!-- Next and previous buttons -->
-			<!-- <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-			<a class="next" onclick="plusSlides(1)">&#10095;</a> -->
-			</div>
-	
-	
-			<br>
-
-			<!-- The dots/circles -->
-			<div style="text-align:center">
-			<span class="dot" onclick="currentSlide(1)"></span>
-			<span class="dot" onclick="currentSlide(2)"></span>
-			<span class="dot" onclick="currentSlide(3)"></span>
-			</div>
-			
-					
+		<?php include 'footer.php'; ?>
 	</div>
-	<center>
-        <h2>About us</h2>
-    </div>
-    <div class="two_second">
-	<div class="nick">
-    
-
-    <!-- <div style="width:300px; text-align:right;"> -->
-	<img src="images/xxx.jpg" alt="" class="" width="1000" height="500">
-                
-                  <!-- <img src="images/xxx.jpg" alt=""   > -->
-                </div>
-    
-
-    <p style="text-align:justify">
-   
-    
-
-                    <h4>ThePetshop operates an online pet shop store selling animal food, vitamins, accessories 
-        and grooming products.<br> company started 2003 as a small pet shop to sell baby dog and cats.<br>
-         The product line had expanded to include a number of products used in wholesale and retail such as dogs and cats feeds and accessories.<br>
-          Today, the company is one of the biggest whosale and retail stores of animal products carrying quality brands.<h4>
-    </p>
-	<div class="v_space"></div>
-    
-    <div class="title-wrapper">
-      
-    </div><center>
-    <div class="two_third" >
-        <h2>Mission</h2>
-        <div class="nick">
-                  <img src="images/d4.jpg" alt="" class="" width="1000" height="500">
-                </div>
-       
-            <p style="text-align:center;">
-            Our goal is to give our customers the best online shopping experience by giving them<br> the provide pet in best price and making each transaction  easy, 
-             fast and secured.</p>
-    </div>
-    <div class="one_third_last" >
-        <h2>Vision</h2>
-        <div class="">
-                  <img src="images/d5.jpg" alt="" class="" width="1000" height="500">
-                </div>
-         <p style="text-align:justify;">
-            <h4>To be the top of the mind trusted online pet shop nationwide.</h4>
-        </p>
-    </div>
-    </div>
-    <br>
-     <br>
-      <br>
-        </center>
-        <!-- <li class="active"><a href="index.php"><i class="fa fa-home"></i>Home</a></li> -->
-        <p><h2>Thank you for visiting!!<h2></p><br><br>
-        <p><h2>Our location!<h2></p>
-
-       
-    <iframe height="400" frameborder="0" style="width: 100%;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14130.927037028825!2d85.33106357908288!3d27.69468432475265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb199a06c2eaf9%3A0xc5670a9173e161de!2sNew%20Baneshwor%2C%20Kathmandu%2044600!5e0!3m2!1sen!2snp!4v1653487804786!5m2!1sen!2snp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> </iframe>
-    <div class="clear"></div>
-</li>
-	
-	<div class="footer w3layouts agileits">
-		<p> &copy;  2021 Pet Shop System. All Rights Reserved .</a></p>
-		
-	</div>
-
-	<script src="auto.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/parallax.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			// Handle click on paging links
+			$('.tm-paging-link').click(function(e){
+				e.preventDefault();
+				
+				var page = $(this).text().toLowerCase();
+				$('.tm-gallery-page').addClass('hidden');
+				$('#tm-gallery-page-' + page).removeClass('hidden');
+				$('.tm-paging-link').removeClass('active');
+				$(this).addClass("active");
+			});
+		});
+	</script>
 </body>
-<!-- //Body -->
-
 </html>
