@@ -1,5 +1,5 @@
 <?php 
-    session_start();
+    @session_start();
     include '../utils.php';
     require_once '../dbconn.php';
 
@@ -34,11 +34,7 @@ https://templatemo.com/tm-539-simple-house
 		
 
 		<main>
-			<ul class="headnav">
-				<li class="headnav"><a href="dashboard.php">Home</a></li>
-				<li class="headnav"><a href="products.php">Products</a></li>
-				<li class="headnav" style="float:right"><a class="active" href="logout.php">Logout</a></li>
-			</ul> 
+			 <?php include 'header.php';?>
 			<header class="row tm-welcome-section">
 				<h2 class="col-12 text-center tm-section-title">Admin Dashboard</h2>
 				<p class="col-12 text-center">Welcome <?=$_SESSION['userData']['uname']?>!</p>
@@ -59,7 +55,7 @@ https://templatemo.com/tm-539-simple-house
 			
 		</main>
 
-		<?php include 'footer.php'; ?>
+		
 	</div>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/parallax.min.js"></script>

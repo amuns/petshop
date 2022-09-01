@@ -8,11 +8,16 @@
 
                 </figure>
             </div>
-            <div class="col-md-6">
-                <div class="tm-description-box"> 
-                    <h4 class="tm-gallery-title">Contact Us</h4>
-                    <p class="tm-mb-45">+977-1234512345</p>
-                    <p class="tm-mb-45"><i class="fa fa-envelope">&nbsp;petshop@contact.com</i></p>
+            <div class="col-md-6" >
+                <div class="tm-description-box" >
+                <h2><b>The Pet Shop</b></h2>
+                <img src="img/contact.png" width="120px" alt="">
+                <h1 class="tm-gallery-title"><b>Reach us?</b></h1>
+                   
+                    <h3 >Baneshwor,Kathmandu</h3>
+                    <p><h4>Telephone no: 9856956895</h4></p>
+                    <p class="tm-mb-45">Opening time:10am-4pm</p>
+                    <p class="tm-mb-45"><i class="fa fa-envelope">&nbsp;Thepetshop@contact.com</i></p>
                     <!-- <a href="about.html" class="tm-btn tm-btn-default tm-right">Read More</a> -->
                 </div>
             </div>
@@ -20,5 +25,5 @@
     </div>
 </main>
 <footer class="tm-footer text-center">
-			<p>Copyright &copy; 2022 Pet Shop 
+			<p>Copyright &copy; The 2022 Pet Shop 
 </footer>

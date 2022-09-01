@@ -8,7 +8,7 @@
     <title>Simple House Template</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" />    
 	<link href="css/templatemo-style.css" rel="stylesheet" />
-	<link href="css/main.css" rel="stylesheet" />
+	<link rel="stylesheet" href="css/main.css" type="text/css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <!--
@@ -46,6 +46,7 @@ https://templatemo.com/tm-539-simple-house
 						<li class="tm-paging-item"><a href="#" class="tm-paging-link active">Dog Food</a></li>
 						<li class="tm-paging-item"><a href="#" class="tm-paging-link">Salad</a></li>
 						<li class="tm-paging-item"><a href="#" class="tm-paging-link">Noodle</a></li>
+						
 					</ul>
 				</nav>
 			</div>
