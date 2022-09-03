@@ -18,6 +18,7 @@
 	<link href="css/templatemo-style.css" rel="stylesheet" />
 	<link href="css/main.css" rel="stylesheet" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
 </head>
 <!--
 
@@ -34,12 +35,7 @@ https://templatemo.com/tm-539-simple-house
 		
 
 		<main>
-			<ul class="headnav">
-				<li class="headnav"><a href="dashboard.php">Home</a></li>
-				<li class="headnav"><a href="products.php">Products</a></li>
-                <li class="headnav"><a href="user.php">Customers</a></li>
-				<li class="headnav" style="float:right"><a class="active" href="logout.php">Logout</a></li>
-			</ul> 
+			<?php include('header.php') ?> 
 			<header class="row tm-welcome-section">
 				<h2 class="col-12 text-center tm-section-title">Customer Detail</h2>
 				<!-- <p class="col-12 text-center">With GREAT Power comes GREAT Responsibility.</p> -->
@@ -48,9 +44,10 @@ https://templatemo.com/tm-539-simple-house
 			<div class="tm-paging-links">
 				<nav>
 					<ul>
-						<li class="tm-paging-item"><a href="user.php" class="tm-paging-link active">List of user and product</a></li>
+						<li class="tm-paging-item"><a href="user.php" class="tm-paging-link active">List of Users</a></li>
 						<!-- <li class="tm-paging-item"><a href="addproduct.php" class="tm-paging-link">Add Product</a></li> -->
 					</ul>
+					<?=flashMessages()?>
 				</nav>
 			</div>
 
@@ -69,22 +66,19 @@ https://templatemo.com/tm-539-simple-house
 					</article> -->
                     <table class="table table-bordered" border="1" id="table_data">
                         <tr>
-                            <th>S No.</th>
+                            <th>User ID</th>
                             <th>Customer Name</th>
                             <th>Email</th>
-                            <th>Category</th>
-                            <th>quantity</th>
-                            <th>Price</th>
                             <th>Action</th>
                         </tr>
 
                         <?php 
-                            $sql=("SELECT * FROM USERS WHERE utype='USER'");
+                            $sql=("SELECT * FROM users WHERE utype='USER'");
 							$stmt=$conn->query($sql);
                             $i=1;
                             while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                             echo "<tr>";
-                                echo "<td>".$i."</td>";
+                                echo "<td>".$row['user_id']."</td>";
                                 echo "<td>".validate($row['uname'])."</td>";
                                 echo "<td>".validate($row['email'])."</td>";
                                 // echo "<td>".validate($row['category'])."</td>";
@@ -93,10 +87,10 @@ https://templatemo.com/tm-539-simple-house
                                 ?>
                                 <td>
                                     
-                                    <button class="button1" style="position: relative; left: 8px;" onclick="window.location.href='approveproduct.php?uid=<?=$_GET['uid']?>&pid=<?=$row['product_id']?>';"><b>Approve</b></button> &nbsp; 
+                                    <!-- <button class="button1" style="position: relative; left: 8px; margin-right: 10px;" onclick="window.location.href='approveproduct.php?uid=<?=$_GET['uid']?>&pid=<?=$row['product_id']?>';"><b>Approve</b></button> &nbsp;  -->
                                     <!-- button ko lagi link create garna onclick="window.location.href='deletecompany.php?';" -->
-                                    <form method="POST" action="denyproduct.php?uid=<?=$_GET['uid']?>&&pid=<?=$row['product_id']?>" style="float: right;">
-                                        <button class="button2" style="position: relative; left: -8px" name="deleteproduct" ><b>Deny</b></button>
+                                    <form method="POST" action="removeuser.php?uid=<?=$row['user_id']?>" style="float: right;">
+                                        <button class="button2" name="removeuser" ><b>Remove</b></button>
                                     </form>
                                 </td>      
                                 <?php

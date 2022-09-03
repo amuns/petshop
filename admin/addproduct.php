@@ -2,9 +2,54 @@
     session_start();
     include '../utils.php';
     require_once '../dbconn.php';
+	date_default_timezone_set('Asia/Kathmandu');
 
-
-    if(isset($_SESSION['userData']) && $_SESSION['userData']['utype']=="ADMIN"){
+	if(isset($_POST, $_POST['name'], $_POST['description'], $_POST['price'], $_POST['quantity'], $_POST['category'], $_FILES)){
+		$pname=validate($_POST['name']);
+		$desc=validate($_POST['description']);
+		$price=validate($_POST['price']);
+		$qty=validate($_POST['quantity']);
+		$catid=$_POST['category'];
+		$tmp_name=$_FILES['image']['tmp_name'];
+		// debug($_FILES);exit;
+		$extArray=['jpg', 'jpeg', 'png'];
+		$ext=pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+		$dir="uploads/";
+		if(!in_array($ext, $extArray)){
+			$_SESSION['error']="Invalid Image type!";
+			header('location: addproduct.php');
+			exit;
+		}
+		$imagename="img_".time().rand(1,100).'.'. $ext;
+		// $imagename=basename($_FILES['image']['name']);
+		$copy=copy($_FILES['image']['tmp_name'], "$dir/$imagename");
+		if(!$copy){
+			$_SESSION['error']="Error in image transfer!";
+			header('location: products.php');
+			exit;
+		}
+		$stmt=$conn->prepare("INSERT into products(name, description, price, quantity, image, category_id) VALUES(:a, :b, :c, :d, :e, :f)");
+		$stmt->execute(array(
+			':a'=>$pname,
+			':b'=>$desc,
+			':c'=>$price,
+			':d'=>$qty,
+			':e'=>$imagename,
+			':f'=>$catid
+		));
+		if($stmt){
+			$_SESSION['success']="Products added Successfully!";
+			header('location: products.php');
+			exit;
+		}
+		$_SESSION['error']="Error Occured!";
+		header('location: products.php');
+		exit;
+		
+		
+	}
+    
+	if(isset($_SESSION['userData']) && $_SESSION['userData']['utype']=="ADMIN"){
 ?>
 <!DOCTYPE html>
 <html>
@@ -34,11 +79,7 @@ https://templatemo.com/tm-539-simple-house
 		
 
 		<main>
-			<ul class="headnav">
-				<li class="headnav"><a href="dashboard.php">Home</a></li>
-				<li class="headnav"><a href="products.php">Products</a></li>
-				<li class="headnav" style="float:right"><a class="active" href="logout.php">Logout</a></li>
-			</ul> 
+			<?php include 'header.php'; ?>
 			<header class="row tm-welcome-section">
 				<h2 class="col-12 text-center tm-section-title">Product CRUD</h2>
 				<!-- <p class="col-12 text-center">With GREAT Power comes GREAT Responsibility.</p> -->
@@ -48,15 +89,12 @@ https://templatemo.com/tm-539-simple-house
 				<nav>
 					<ul>
 						<li class="tm-paging-item"><a href="products.php" class="tm-paging-link">List All Products</a></li>
-						<li class="tm-paging-item"><a href="addproduct.php" class="tm-paging-link active">Add Product</a></li>
+						<li class="tm-paging-item"><a href="addproduct.php" class="tm-paging-link active">Add Product</a></li><br>
+						<?=flashMessages();?>
 					</ul>
 				</nav>
 			</div>
-            <?php 
-                if(isset($_POST, $_POST['name'], $_POST['description'], $_POST['price'], $_POST['quantity'], $_POST['image'])){
-                    
-                }
-            ?>
+            
             <div class="row tm-gallery">
 				<!-- gallery page 1 -->
 				<div id="tm-gallery-page-pizza" class="tm-gallery-page">
@@ -65,6 +103,16 @@ https://templatemo.com/tm-539-simple-house
                         Description: <input type="text" name="description" required><br><br>
                         Price: <input type="number" name="price" required><br><br>
                         Quantity: <input type="number" name="quantity" required><br><br>
+                        Category: <select name="category">
+							<?php 
+								$stmt=$conn->query("Select category_id, name from category");
+								while($c=$stmt->fetch(PDO::FETCH_ASSOC)){
+									?>
+									  <option value="<?=$c['category_id']?>"><?=$c['name']?></option>
+							<?php
+								} 
+							?>
+						</select><br><br>
                         Image: <input type="file" name="image" required><br><br>
                         <input type="submit" value="Add Product">
                     </form>
