@@ -1,11 +1,38 @@
 <?php 
-    @session_start();
-    include '../utils.php';
-    require_once '../dbconn.php';
+    session_start();
+    require '../dbconn.php';
+    require '../utils.php';
+    // debug($_SESSION['userData']);exit;
+    if(!isset($_SESSION['userData']) || $_SESSION['userData']['utype']!="USER"){
+        $_SESSION['error']="Please Log In first!";
+        header('location: ../login.php');
+        exit;
+    }
+    
+    $uid=$_SESSION['userData']['user_id'];
+    
+    if(isset($_GET['pid'])){
+        $pid=$_GET['pid'];
+        $stmt=$conn->query("SELECT * from cart WHERE user_id=$uid");
+        if($stmt->rowCount()>=1){
+            $_SESSION['error']="Product Exists in Cart!";
+            header('location: products.php');
+            exit;
+        }
+        
+        $stmt=$conn->prepare("INSERT INTO cart(product_id, user_id) VALUES(:a, :b)");
+        $stmt->execute(array(
+            ':a'=>$_GET['pid'],
+            ':b'=>$_SESSION['userData']['user_id']
+        ));
+    }
+    
+    
+    
 
-
-    if(isset($_SESSION['userData']) && $_SESSION['userData']['utype']=="ADMIN"){
+    
 ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -13,7 +40,7 @@
 	<meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Simple House Template</title>
+    <title>The Pet Shop</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" />    
 	<link href="css/templatemo-style.css" rel="stylesheet" />
 	<link href="css/main.css" rel="stylesheet" />
@@ -32,25 +59,17 @@ https://templatemo.com/tm-539-simple-house
 	<div class="container">
 	<!-- Top box -->
 		<!-- Logo & Site Name -->
-		<div class="parallax-window" data-parallax="scroll" data-image-src="img/banner.png">
 		
 
 		<main>
 			<?php include('header.php') ?> 
 			<header class="row tm-welcome-section">
-				<h2 class="col-12 text-center tm-section-title">Sign in Customer's Detail</h2>
+				<h2 class="col-12 text-center tm-section-title">Cart Details</h2>
+                <center><?=flashMessages()?></center>
 				<!-- <p class="col-12 text-center">With GREAT Power comes GREAT Responsibility.</p> -->
 			</header>
 			
-			<div class="tm-paging-links">
-				<nav>
-					<ul>
-						<li class="tm-paging-item"><a href="user.php" class="tm-paging-link active">List of Users</a></li>
-						<!-- <li class="tm-paging-item"><a href="addproduct.php" class="tm-paging-link">Add Product</a></li> -->
-					</ul>
-					<?=flashMessages()?>
-				</nav>
-			</div>
+			
 
             <div class="row tm-gallery">
 				<!-- gallery page 1 -->
@@ -67,31 +86,31 @@ https://templatemo.com/tm-539-simple-house
 					</article> -->
                     <table class="table table-bordered" border="1" id="table_data">
                         <tr>
-                            <th>User ID</th>
-                            <th>Customer Name</th>
-                            <th>Email</th>
+                            <th>S. No.</th>
+                            <th>Product Name</th>
+                            <th>Image</th>
                             <th>Action</th>
                         </tr>
 
                         <?php 
-                            $sql=("SELECT * FROM users WHERE utype='USER'");
-							$stmt=$conn->query($sql);
+							$stmt=$conn->query("SELECT * from cart WHERE user_id=$uid");
                             $i=1;
                             while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                             echo "<tr>";
-                                echo "<td>".$row['user_id']."</td>";
-                                echo "<td>".validate($row['uname'])."</td>";
-                                echo "<td>".validate($row['email'])."</td>";
-                                // echo "<td>".validate($row['category'])."</td>";
-                                // echo "<td>RS. ".validate($row['price'])."</td>";
-                                // echo "<td>".validate($row['quantity'])."</td>";
-                                ?>
+                                echo "<td>".$i."</td>";$i++;
+                                $pid=$row['product_id'];
+                                $stmt1=$conn->query("SELECT name, image from products WHERE product_id=$pid");
+                                $product=$stmt1->fetch(PDO::FETCH_ASSOC);
+                                echo "<td>".$product['name']."</td>";
+                            ?>
+                                <td><img src="../admin/uploads/<?=$product['image']?>" width="120px"></td>
+                            
                                 <td>
                                     
                                     <!-- <button class="button1" style="position: relative; left: 8px; margin-right: 10px;" onclick="window.location.href='approveproduct.php?uid=<?=$_GET['uid']?>&pid=<?=$row['product_id']?>';"><b>Approve</b></button> &nbsp;  -->
                                     <!-- button ko lagi link create garna onclick="window.location.href='deletecompany.php?';" -->
-                                    <form method="POST" action="removeuser.php?uid=<?=$row['user_id']?>" style="float: right;">
-                                        <button class="button2" name="removeuser" ><b>Remove</b></button>
+                                    <form method="POST" action="removecart.php?id=<?=$row['id']?>&&pid=<?=$row['product_id']?>" style="float: right;">
+                                        <button class="button2" name="removefromcart" ><b>Remove</b></button>
                                     </form>
                                 </td>      
                                 <?php
@@ -128,11 +147,3 @@ https://templatemo.com/tm-539-simple-house
 	</script>
 </body>
 </html>
-<?php
-    }
-    else{
-        $_SESSION['error']="Access Not Granted!";
-        header('location: ../login.php');
-        exit;
-    }
-?>

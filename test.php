@@ -18,4 +18,21 @@
     /* $stmt->execute(array(
         ':cname'=>"test"
     )); */
+    // require 'utils.php';
+    // if(isset($_POST['upload'], $_FILES)){
+    //     $tmp_name=$_FILES['img']['tmp_name'];
+    //     $file=$_FILES['img']['name'];
+    //     debug($_FILES);
+    //     if(isset($file)){
+    //         $dir="./img/";
+    //         if(move_uploaded_file($tmp_name, $dir.$file)){
+    //             echo "uploaded";
+    //         }
+    //     }
+    // }
+    // else{
+    //     echo "NOT SET";
+    // }
+
 ?>
+

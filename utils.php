@@ -1,5 +1,5 @@
 <?php 
-    session_start();
+    @session_start();
     function debug($string){
         echo "<pre>";
         print_r($string);
@@ -7,12 +7,12 @@
     }
 
     function flashMessages(){
-        if($_SESSION['success'] && !empty($_SESSION['success'])){
+        if(@$_SESSION['success'] && !empty($_SESSION['success'])){
             echo "<span style='color: green'>".$_SESSION['success']."</span>";
             unset($_SESSION['success']);
         }
 
-        if($_SESSION['error'] && !empty($_SESSION['error'])){
+        if(@$_SESSION['error'] && !empty($_SESSION['error'])){
             echo "<span style='color: red; padding-bottom: 15px;'>".$_SESSION['error']."</span>";
             unset($_SESSION['error']);
         }

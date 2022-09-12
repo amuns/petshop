@@ -1,5 +1,5 @@
 <?php 
-    @session_start();
+    session_start();
     include '../utils.php';
     require_once '../dbconn.php';
 
@@ -18,7 +18,6 @@
 	<link href="css/templatemo-style.css" rel="stylesheet" />
 	<link href="css/main.css" rel="stylesheet" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	
 </head>
 <!--
 
@@ -32,23 +31,22 @@ https://templatemo.com/tm-539-simple-house
 	<div class="container">
 	<!-- Top box -->
 		<!-- Logo & Site Name -->
-		<div class="parallax-window" data-parallax="scroll" data-image-src="img/banner.png">
 		
 
 		<main>
-			<?php include('header.php') ?> 
+			<?php include('header.php') ?>
 			<header class="row tm-welcome-section">
-				<h2 class="col-12 text-center tm-section-title">Sign in Customer's Detail</h2>
+				<h2 class="col-12 text-center tm-section-title">Category CRUD</h2>
 				<!-- <p class="col-12 text-center">With GREAT Power comes GREAT Responsibility.</p> -->
 			</header>
 			
 			<div class="tm-paging-links">
 				<nav>
 					<ul>
-						<li class="tm-paging-item"><a href="user.php" class="tm-paging-link active">List of Users</a></li>
-						<!-- <li class="tm-paging-item"><a href="addproduct.php" class="tm-paging-link">Add Product</a></li> -->
+						<li class="tm-paging-item"><a href="category.php" class="tm-paging-link active">List All Categories</a></li>
+						<li class="tm-paging-item"><a href="addcategory.php" class="tm-paging-link">Add Category</a></li>
 					</ul>
-					<?=flashMessages()?>
+                    <?=flashMessages()?>
 				</nav>
 			</div>
 
@@ -67,31 +65,27 @@ https://templatemo.com/tm-539-simple-house
 					</article> -->
                     <table class="table table-bordered" border="1" id="table_data">
                         <tr>
-                            <th>User ID</th>
-                            <th>Customer Name</th>
-                            <th>Email</th>
+                            <th>Category ID</th>
+                            <th>Category</th>
+                            <th>Created At</th>
                             <th>Action</th>
                         </tr>
 
                         <?php 
-                            $sql=("SELECT * FROM users WHERE utype='USER'");
-							$stmt=$conn->query($sql);
-                            $i=1;
+                            $stmt=$conn->query("SELECT * from category");
+                          
                             while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
                             echo "<tr>";
-                                echo "<td>".$row['user_id']."</td>";
-                                echo "<td>".validate($row['uname'])."</td>";
-                                echo "<td>".validate($row['email'])."</td>";
-                                // echo "<td>".validate($row['category'])."</td>";
-                                // echo "<td>RS. ".validate($row['price'])."</td>";
-                                // echo "<td>".validate($row['quantity'])."</td>";
+                            echo "<td>".validate($row['category_id'])."</td>";
+                                echo "<td>".validate($row['name'])."</td>";
+                                echo "<td>".validate($row['created_at'])."</td>";
                                 ?>
                                 <td>
                                     
-                                    <!-- <button class="button1" style="position: relative; left: 8px; margin-right: 10px;" onclick="window.location.href='approveproduct.php?uid=<?=$_GET['uid']?>&pid=<?=$row['product_id']?>';"><b>Approve</b></button> &nbsp;  -->
+                                    <button class="button1" style="position: relative; left: 8px; margin-right: 8px;" onclick="window.location.href='editcategory.php?cid=<?=$row['category_id']?>';"><b>Update</b></button> &nbsp; 
                                     <!-- button ko lagi link create garna onclick="window.location.href='deletecompany.php?';" -->
-                                    <form method="POST" action="removeuser.php?uid=<?=$row['user_id']?>" style="float: right;">
-                                        <button class="button2" name="removeuser" ><b>Remove</b></button>
+                                    <form method="POST" action="removecategory.php?cid=<?=$row['category_id']?>" style="float: right;">
+                                        <button class="button2" style="position: relative; left: -8px" name="removecategory" ><b>Remove</b></button>
                                     </form>
                                 </td>      
                                 <?php
