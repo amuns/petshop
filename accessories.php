@@ -1,13 +1,13 @@
 <?php 
     session_start();
-    require '../dbconn.php';
-    require '../utils.php';
+    require 'dbconn.php';
+    require 'utils.php';
     // debug($_SESSION['userData']);exit;
-    if(!isset($_SESSION['userData']) || $_SESSION['userData']['utype']!="USER"){
-        $_SESSION['error']="Please Log In first!";
-        header('location: ../login.php');
-        exit;
-    }
+    // if(!isset($_SESSION['userData']) || $_SESSION['userData']['utype']!="USER"){
+    //     $_SESSION['error']="Please Log In first!";
+    //     header('location: ../login.php');
+    //     exit;
+    // }
 
 ?>
 <!DOCTYPE html>
@@ -55,8 +55,8 @@ https://templatemo.com/tm-539-simple-house
 				<nav>
 					<ul>
 						<li class="tm-paging-item"><a href="products.php" class="tm-paging-link">Food</a></li>
-						<li class="tm-paging-item"><a href="accessories.php" class="tm-paging-link">Accessories</a></li>
-						<li class="tm-paging-item"><a href="firstaidkit.php" class="tm-paging-link active">First Aid Kit</a></li>
+						<li class="tm-paging-item"><a href="accessories.php" class="tm-paging-link active">Accessories</a></li>
+						<li class="tm-paging-item"><a href="firstaidkit.php" class="tm-paging-link">First Aid Kit</a></li>
 						<li class="tm-paging-item"><a href="pets.php" class="tm-paging-link">Pets</a></li>
 						
 					</ul><br><br>
@@ -78,16 +78,16 @@ https://templatemo.com/tm-539-simple-house
                         $sql="";
                         if(isset($_POST['search_data'])){
                             $keyword=$_POST['search_data'];
-                            $sql=("SELECT * FROM products WHERE name LIKE '%$keyword%' AND category_id=6");
+                            $sql=("SELECT * FROM products WHERE name LIKE '%$keyword%' AND category_id=2");
                           }
                           else{
-                            $sql=("SELECT * FROM products WHERE category_id=6");
+                            $sql=("SELECT * FROM products WHERE category_id=2");
                           } 
                         $stmt=$conn->query($sql);
                         if($stmt->rowCount()<=0){
                     ?>
-                        <p class="tm-gallery-description">No Products Available!</p>
-                  <?php
+                            <p class="tm-gallery-description">No Products Available!</p>
+                    <?php
                         }
                         else{
                         while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
@@ -99,7 +99,7 @@ https://templatemo.com/tm-539-simple-house
                                     <h4 class="tm-gallery-title"><?=$row['name']?></h4>
                                     <p class="tm-gallery-description"><?=$row['description'];?></p>
                                     <p class="tm-gallery-price">Rs. <?=$row['price']?></p>
-                                    <button onclick="window.location.href='cart.php?pid=<?=$row['product_id']?>'">Add to Cart</button>
+                                    <button onclick="window.location.href='user/cart.php?pid=<?=$row['product_id']?>'">Add to Cart</button>
                                 </figcaption>
                             </figure>
                         </article>

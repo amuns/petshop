@@ -1,4 +1,4 @@
-<main>
+
     <div class="tm-section tm-container-inner" id="contact">
         <div class="row">
             <div class="col-md-6">
@@ -23,7 +23,7 @@
             </div>
         </div>
     </div>
-</main>
+
 <footer class="tm-footer text-center">
 			<p>Copyright &copy; The 2022 Pet Shop 
 </footer>

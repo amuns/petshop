@@ -1,13 +1,13 @@
 <?php 
     session_start();
-    require '../dbconn.php';
-    require '../utils.php';
+    require 'dbconn.php';
+    require 'utils.php';
     // debug($_SESSION['userData']);exit;
-    if(!isset($_SESSION['userData']) || $_SESSION['userData']['utype']!="USER"){
-        $_SESSION['error']="Please Log In first!";
-        header('location: ../login.php');
-        exit;
-    }
+    // if(!isset($_SESSION['userData']) || $_SESSION['userData']['utype']!="USER"){
+    //     $_SESSION['error']="Please Log In first!";
+    //     header('location: ../login.php');
+    //     exit;
+    // }
 
 ?>
 <!DOCTYPE html>
@@ -99,7 +99,7 @@ https://templatemo.com/tm-539-simple-house
                                     <h4 class="tm-gallery-title"><?=$row['name']?></h4>
                                     <p class="tm-gallery-description"><?=$row['description'];?></p>
                                     <p class="tm-gallery-price">Rs. <?=$row['price']?></p>
-                                    <button onclick="window.location.href='cart.php?pid=<?=$row['product_id']?>'">Add to Cart</button>
+                                    <button onclick="window.location.href='user/cart.php?pid=<?=$row['product_id']?>'">Add to Cart</button>
                                 </figcaption>
                             </figure>
                         </article>

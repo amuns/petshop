@@ -17,7 +17,7 @@
 	<meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>The Pet shop</title>
+    <title>The Pet Shop</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" />    
 	<link href="css/templatemo-style.css" rel="stylesheet" />
 	<link rel="stylesheet" href="css/main.css" type="text/css">
@@ -35,16 +35,16 @@ https://templatemo.com/tm-539-simple-house
 	<div class="container">
 	<!-- Top box -->
 		<!-- Logo & Site Name -->
-		<div class="placeholder">
+		<!-- <div class="placeholder">
 			<div class="parallax-window" data-parallax="scroll" data-image-src="img/banner.png">
 				
 			</div>
-		</div>
+		</div> -->
 
-		<main>
 			<?php
 				include 'header.php';
 			?>
+		<main>
 			<header class="row tm-welcome-section">
 				<h2 class="col-12 text-center tm-section-title">Our Products</h2>
 				<?=flashMessages();?>

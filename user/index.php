@@ -34,16 +34,12 @@ https://templatemo.com/tm-539-simple-house
 	<div class="container">
 	<!-- Top box -->
 		<!-- Logo & Site Name -->
-		<div class="placeholder">
-			<div class="parallax-window" data-parallax="scroll" data-image-src="../img/banner.png">
-			
-		</div>
-		</div>
+		
 
-		<main>
 			<?php
 				include 'header.php';
 			?> 
+		<main>
 			<header class="row tm-welcome-section">
 				<h2 class="col-12 text-center tm-section-title">Welcome to Pet Shop</h2>
 				<p class="col-12 text-center">Our goal is to achieve customers' satisfaction and try be known for our services in the locality.</p>

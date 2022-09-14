@@ -35,16 +35,12 @@ https://templatemo.com/tm-539-simple-house
 	<div class="container">
 	<!-- Top box -->
 		<!-- Logo & Site Name -->
-		<div class="placeholder">
-			<div class="parallax-window" data-parallax="scroll" data-image-src="../img/banner.png">
-				
-			</div>
-		</div>
+		
 
-		<main>
 			<?php
 				include 'header.php';
 			?>
+		<main>
 			<header class="row tm-welcome-section">
 				<h2 class="col-12 text-center tm-section-title">Our Products</h2>
 				<?=flashMessages();?>
