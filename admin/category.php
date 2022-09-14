@@ -85,7 +85,7 @@ https://templatemo.com/tm-539-simple-house
                                     <button class="button1" style="position: relative; left: 8px; margin-right: 8px;" onclick="window.location.href='editcategory.php?cid=<?=$row['category_id']?>';"><b>Update</b></button> &nbsp; 
                                     <!-- button ko lagi link create garna onclick="window.location.href='deletecompany.php?';" -->
                                     <form method="POST" action="removecategory.php?cid=<?=$row['category_id']?>" style="float: right;">
-                                        <button class="button2" style="position: relative; left: -8px" name="removecategory" ><b>Remove</b></button>
+                                        <button class="button2" type="submit" style="position: relative; left: -8px" name="removecategory" ><b>Remove</b></button>
                                     </form>
                                 </td>      
                                 <?php

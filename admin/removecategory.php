@@ -4,7 +4,8 @@
     require '../utils.php';
 
     $cid=$_GET['cid'];
-   
+    
+    // debug($_POST);exit;
     if(isset($_POST, $_POST['removecategory'])){
         
         try{
@@ -13,20 +14,21 @@
 
             if($stmt){
                 $_SESSION['error']="Table updated!";
-                header("location: category.php?uid=$uid");
+                header("location: category.php");
                 exit;
             }
             
         }
         catch(Exception $e){
             $_SESSION['error']="Oops deletion error!";
-            header("location: category.php?uid=$uid");
+            // $_SESSION['error']=$e;
+            header("location: category.php");
             exit;
         }
     }
     else{
         $_SESSION['error']="Oops unidentified error!";
-        header("location: category.php?uid=$uid");
+        header("location: category.php");
         exit;
     }
 ?>
